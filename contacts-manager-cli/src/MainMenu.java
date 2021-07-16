@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Map;
 import java.util.Scanner;
 
 public class MainMenu {
@@ -34,13 +35,37 @@ public class MainMenu {
                     ContactReading.printFileContents(ContactReading.readFromFile(path));
                 } catch (IOException e){
                     System.out.println("Couldn't print contents at " + path.toAbsolutePath());
-                } break;
+                }
+                continueCheck();
+                break;
+
             case "2":
                 ContactAddAndDelete.userAddContact();
-                homeScreen();
+                continueCheck();
+                break;
+
+            case "3":
+                ContactIndexing.searchByName();
+                continueCheck();
+                break;
+            case "log":
+                for (Map.Entry<Integer, Contact> contact : ContactList.contactList){
+                    System.out.println(contact);
+                }
+                continueCheck();
                 break;
         }
 
+    }
+    public static void continueCheck(){
+        System.out.println("Would you like to continue? y/n");
+        String input = scanner.next();
+        if (input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes")){
+            homeScreen();
+        }
+        else {
+            return;
+        }
     }
 
 

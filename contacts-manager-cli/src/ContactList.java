@@ -13,6 +13,7 @@ public class ContactList {
 
 
     public static void getContacts(List<String> contents){
+        contactList.clear();
         int numberOfContacts = 0;
         for (String line : contents){
             String[] contactArr = line.split(" \\| ");
