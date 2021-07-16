@@ -4,17 +4,27 @@ import java.util.Set;
 
 public class Contact {
 
-    protected HashMap<String, Long> contact = new HashMap<>();
+   protected String name;
+   protected String number;
 
-    public Contact(String name, Long number) {
-        this.contact.put(name, number);
+    public Contact(String name, String number) {
+        this.name = name;
+        this.number = number;
     }
 
-    public Set<Map.Entry<String, Long>> getContact() {
-        return contact.entrySet();
+    public String getName() {
+        return name;
     }
 
-    public void setContact(String name, Long number) {
-        this.contact.put(name, number);
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 }
