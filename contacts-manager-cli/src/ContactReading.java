@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 
 public class ContactReading {
@@ -21,6 +22,8 @@ public class ContactReading {
     public static void printFileContents (List<String> contents) {
         for (String line : contents){
             System.out.println(line);
+//            System.out.println(Arrays.toString(line.split(" \\| ")));
+
         }
     }
 

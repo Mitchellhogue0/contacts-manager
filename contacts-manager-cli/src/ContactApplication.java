@@ -10,9 +10,9 @@ public class ContactApplication {
 
         ContactReading.tryPrintContents(path);
 
-        List<String> test = new ArrayList<>();
-        test.add("Grady Griffin | 1231231234");
-        ContactAddAndDelete.tryWriteToFile(test, path);
+//        List<String> test = new ArrayList<>();
+//        test.add("Grady Griffin | 1231231234");
+//        ContactAddAndDelete.tryWriteToFile(test, path);
     }
 
 }
