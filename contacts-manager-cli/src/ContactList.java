@@ -23,15 +23,15 @@ public class ContactList {
     }
 
 
-//    public static void tryUpdatingList () {
-//        for (Map.Entry<Integer, Contact> contact : contactList){
-//            System.out.println(contact.getValue().getName());
-//            List<String> placeholder = new ArrayList<>();
-//            placeholder.add(contact.getValue().getName() + " | " + contact.getValue().getNumber());
-//            ContactAddAndDelete.tryWriteToFile(placeholder, MainMenu.path);
-//            System.out.println(contactList);
-//        }
-//    }
+    public static void tryUpdatingList () {
+        for (Map.Entry<Integer, Contact> contact : contactList){
+            System.out.println(contact.getValue().getName());
+            List<String> placeholder = new ArrayList<>();
+            placeholder.add(contact.getValue().getName() + " | " + contact.getValue().getNumber());
+            ContactAddAndDelete.tryWriteToFile(placeholder, MainMenu.path);
+            System.out.println(contactList);
+        }
+    }
 
 }
 

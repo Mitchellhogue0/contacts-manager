@@ -48,6 +48,14 @@ public class MainMenu {
                 ContactIndexing.searchByName();
                 continueCheck();
                 break;
+            case "5":
+                try {
+                    ContactEditing.tryEditFile(ContactReading.readFromFile(MainMenu.path));
+                } catch (IOException e){
+                    System.out.println("Could not read file at: " + path.toAbsolutePath());
+                }
+                continueCheck();
+                break;
             case "log":
                 for (Map.Entry<Integer, Contact> contact : ContactList.contactList){
                     System.out.println(contact);
