@@ -27,6 +27,7 @@ public class ContactEditing {
         System.out.println("0: Edit name");
         System.out.println("1: Edit number");
         System.out.println("2: Edit both");
+        System.out.println("3: Cancel");
         String input2 = MainMenu.scanner.next();
         switch (input2){
             case "0":
@@ -53,6 +54,13 @@ public class ContactEditing {
                 ContactList.contactList.get(Integer.parseInt(input)).getValue().setNumber(input6);
                 System.out.println("Changed name and number to: " + input5 + " | " + input6);
                 break;
+            case "3":
+                System.out.println("Returning to main menu....");
+                MainMenu.homeScreen();
+                break;
+            default:
+                System.out.println("Error not an option.");
+                tryEditFile(contents);
         }
         writeToFileNoAppend(MainMenu.path);
     }

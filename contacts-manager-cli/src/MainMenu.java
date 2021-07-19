@@ -40,7 +40,7 @@ public class MainMenu {
                 break;
 
             case "2":
-                ContactAddAndDelete.userAddContact();
+                ContactAdd.userAddContact();
                 continueCheck();
                 break;
 
@@ -48,6 +48,13 @@ public class MainMenu {
                 ContactIndexing.searchByName();
                 continueCheck();
                 break;
+            case "4":
+                try{
+                    ContactDelete.deleteContact(ContactReading.readFromFile(MainMenu.path));
+                } catch (IOException e){
+                    System.out.println("Could not delete file at: " + path.toAbsolutePath());
+                }
+                continueCheck();
             case "5":
                 try {
                     ContactEditing.tryEditFile(ContactReading.readFromFile(MainMenu.path));
@@ -56,25 +63,33 @@ public class MainMenu {
                 }
                 continueCheck();
                 break;
-            case "log":
-                for (Map.Entry<Integer, Contact> contact : ContactList.contactList){
-                    System.out.println(contact);
-                }
-                continueCheck();
+            case "6":
+                System.exit(0);
                 break;
+            default:
+                System.out.println("Error not an option.");
+                homeScreen();
+
         }
 
     }
     public static void continueCheck(){
-        System.out.println("Would you like to continue? y/n");
+        System.out.println("\nWould you like to continue?");
+        System.out.println("0 - yes");
+        System.out.println("1 - no");
         String input = scanner.next();
-        if (input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes")){
+        if (input.equalsIgnoreCase("0")){
             homeScreen();
         }
-        else {
-            return;
+        else if(input.equalsIgnoreCase("1")){
+            System.exit(0);
+        }
+        else{
+            System.out.println("Error not an option.");
+            continueCheck();
         }
     }
+
 
 
     public static void initSetContacts() {

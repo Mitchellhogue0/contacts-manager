@@ -28,7 +28,7 @@ public class ContactList {
             System.out.println(contact.getValue().getName());
             List<String> placeholder = new ArrayList<>();
             placeholder.add(contact.getValue().getName() + " | " + contact.getValue().getNumber());
-            ContactAddAndDelete.tryWriteToFile(placeholder, MainMenu.path);
+            ContactAdd.tryWriteToFile(placeholder, MainMenu.path);
             System.out.println(contactList);
         }
     }
