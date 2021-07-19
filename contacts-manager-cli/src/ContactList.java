@@ -17,20 +17,20 @@ public class ContactList {
         int numberOfContacts = 0;
         for (String line : contents){
             String[] contactArr = line.split(" \\| ");
-            setContactList(numberOfContacts , new Contact(contactArr[0], contactArr[1]));
+            String newNumber = contactArr[1].replaceFirst("(\\d{3})(\\d{3})(\\d+)", "($1) $2-$3");
+            setContactList(numberOfContacts , new Contact(contactArr[0], newNumber));
             numberOfContacts++;
         }
+        tryUpdatingList();
     }
 
 
     public static void tryUpdatingList () {
+        List<String> placeholder = new ArrayList<>();
         for (Map.Entry<Integer, Contact> contact : contactList){
-            System.out.println(contact.getValue().getName());
-            List<String> placeholder = new ArrayList<>();
             placeholder.add(contact.getValue().getName() + " | " + contact.getValue().getNumber());
-            ContactAdd.tryWriteToFile(placeholder, MainMenu.path);
-            System.out.println(contactList);
         }
+        ContactEditing.writeToFileNoAppend(placeholder, MainMenu.path);
     }
 
 }

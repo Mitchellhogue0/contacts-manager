@@ -7,13 +7,6 @@ public class MainMenu {
     public static Scanner scanner = new Scanner(System.in);
     public static Path path = ContactReading.getPath("contacts-manager-cli", "src", "contacts.txt");
 
-    public static void main(String[] args) {
-       initSetContacts();
-       homeScreen();
-
-
-    }
-
 
     public static void homeScreen() {
         System.out.println("Welcome!");

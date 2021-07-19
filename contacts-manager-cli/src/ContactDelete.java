@@ -10,13 +10,17 @@ public class ContactDelete {
             ContactList.setContactList(numberOfContacts , new Contact(contactArr[0], contactArr[1]));
             numberOfContacts++;
         }
-        System.out.println("Enter the number of contact you would like to delete: ");
+        System.out.println("Enter the number of contact you would like to delete or type 'exit': ");
 
         for (Map.Entry<Integer, Contact> contact : ContactList.contactList){
             System.out.print(contact.getKey() + ": ");
             System.out.println(contact.getValue().getName() + " | " + contact.getValue().getNumber());
         }
         String input = MainMenu.scanner.next();
+        if (input.equalsIgnoreCase("exit")){
+            System.out.println("Returning to main menu....");
+            MainMenu.homeScreen();
+        }
         System.out.println("Are you sure you want to delete: ");
         System.out.println(ContactList.contactList.get(Integer.parseInt(input)).getValue().getName() + " | " + ContactList.contactList.get(Integer.parseInt(input)).getValue().getNumber());
         System.out.println("0 - yes");
