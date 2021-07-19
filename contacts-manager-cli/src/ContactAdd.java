@@ -23,14 +23,10 @@ public static void userAddContact () {
     if (userName.equalsIgnoreCase("exit")){
         MainMenu.homeScreen();
     }
+    ContactIndexing.ifNameExists(userName);
     System.out.println("Enter contact's number: ");
     String userNumber = MainMenu.scanner.nextLine();
-    if(ContactIndexing.ifNameExists(userName)) {
-        List<String> newContact = new ArrayList<>();
-        newContact.add(userName + " | " + userNumber);
-        tryWriteToFile(newContact, MainMenu.path);
-        System.out.println("Contact added successfully... ");
-    }
+
 
     List<String> newContact = new ArrayList<>();
     newContact.add(userName + " | " + userNumber);

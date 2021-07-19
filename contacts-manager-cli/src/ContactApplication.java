@@ -5,7 +5,8 @@ import java.util.List;
 public class ContactApplication {
 
     public static void main(String[] args) {
-    Path path = ContactReading.getPath("contacts-manager-cli", "src", "contacts.txt");
+        MainMenu.initSetContacts();
+        MainMenu.homeScreen();
 
     }
 

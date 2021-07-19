@@ -9,7 +9,11 @@ public class Contact {
 
     public Contact(String name, String number) {
         this.name = name;
-        this.number = number;
+        if (number.length() == 10){
+            this.number = number.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "($1) $2-$3");
+        } else {
+            this.number = number;
+        }
     }
 
     public String getName() {
@@ -25,6 +29,10 @@ public class Contact {
     }
 
     public void setNumber(String number) {
-        this.number = number;
+        if (number.length() == 10){
+            this.number = number.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "($1) $2-$3");
+        } else {
+            this.number = number;
+        }
     }
 }

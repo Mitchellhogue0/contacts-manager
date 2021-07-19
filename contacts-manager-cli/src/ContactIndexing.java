@@ -23,14 +23,24 @@ public class ContactIndexing {
             searchByName();
         }
     }
-    public static boolean ifNameExists(String userInput){
+    public static void ifNameExists(String userInput){
         for (Map.Entry<Integer, Contact> contactPair : ContactList.contactList) {
             if(contactPair.getValue().getName().toUpperCase().equals(userInput.toUpperCase())){
                 System.out.println("Contact for: " + contactPair.getValue().getName() + " already exists, did you want to override it?");
-                return yesNo();
+                if (yesNo()){
+                    System.out.println("Enter new name: ");
+                    MainMenu.scanner.nextLine();
+                    String input5 = MainMenu.scanner.nextLine();
+                    contactPair.getValue().setName(input5);
+                    System.out.println("Enter new Number: ");
+                    String input6 = MainMenu.scanner.nextLine();
+                    contactPair.getValue().setNumber(input6);
+                    System.out.println("Changed name and number to: " + input5 + " | " + input6);
+                    ContactEditing.writeToFileNoAppend(MainMenu.path);
+                    MainMenu.continueCheck();
+                }
             }
         }
-        return false;
     }
     public static boolean yesNo(){
         System.out.println("0 - yes");

@@ -22,8 +22,14 @@ public class ContactEditing {
             System.out.print(contact.getKey() + ": ");
             System.out.println(contact.getValue().getName() + " | " + contact.getValue().getNumber());
         }
-        String input = MainMenu.scanner.next();
-        System.out.println("Please select how you would like to edit: ");
+        Integer input = 0;
+        try {
+             input = Integer.parseInt(MainMenu.scanner.next());
+        } catch (Exception e){
+            System.out.println("Invalid input, please enter the number.");
+            tryEditFile(contents);
+        }
+        System.out.println("How would you like to edit: " + ContactList.contactList.get(input).getValue().getName());
         System.out.println("0: Edit name");
         System.out.println("1: Edit number");
         System.out.println("2: Edit both");
@@ -34,25 +40,27 @@ public class ContactEditing {
                 System.out.println("Enter new name: ");
                 MainMenu.scanner.nextLine();
                 String input3 = MainMenu.scanner.nextLine();
-                ContactList.contactList.get(Integer.parseInt(input)).getValue().setName(input3);
+                ContactList.contactList.get(input).getValue().setName(input3);
                 System.out.println("Changed name to: " + input3);
                 break;
             case "1":
                 System.out.println("Enter new Number: ");
                 MainMenu.scanner.nextLine();
                 String input4 = MainMenu.scanner.nextLine();
-                ContactList.contactList.get(Integer.parseInt(input)).getValue().setNumber(input4);
-                System.out.println("Changed number to: " + input4);
+                ContactList.contactList.get(input).getValue().setNumber(input4);
+                String newNumber = input4.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "($1) $2-$3");
+                System.out.println("Changed number to: " + newNumber);
                 break;
             case "2":
                 System.out.println("Enter new name: ");
                 MainMenu.scanner.nextLine();
                 String input5 = MainMenu.scanner.nextLine();
-                ContactList.contactList.get(Integer.parseInt(input)).getValue().setName(input5);
+                ContactList.contactList.get(input).getValue().setName(input5);
                 System.out.println("Enter new Number: ");
                 String input6 = MainMenu.scanner.nextLine();
-                ContactList.contactList.get(Integer.parseInt(input)).getValue().setNumber(input6);
-                System.out.println("Changed name and number to: " + input5 + " | " + input6);
+                ContactList.contactList.get(input).getValue().setNumber(input6);
+                String newNumber1 = input6.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "($1) $2-$3");
+                System.out.println("Changed name and number to: " + input5 + " | " + newNumber1);
                 break;
             case "3":
                 System.out.println("Returning to main menu....");
@@ -72,6 +80,14 @@ public class ContactEditing {
         }
         try {
             Files.write(path, placeholder);
+        } catch (IOException e) {
+            System.out.println("Could not write to file " + path.toAbsolutePath());
+        }
+    }
+
+    public static void writeToFileNoAppend (List<String> content, Path path){
+        try {
+            Files.write(path, content);
         } catch (IOException e) {
             System.out.println("Could not write to file " + path.toAbsolutePath());
         }
